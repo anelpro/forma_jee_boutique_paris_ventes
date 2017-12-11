@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.parisventes.beans.Article;
 import com.parisventes.beans.BDD;
 
 
@@ -26,9 +27,21 @@ public class Articles extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//Integer id = 0;
 		
-		request.setAttribute("allHtml", this.findArticle(request));
+		try {
+			Integer id = Integer.parseInt(request.getParameter("id"));
+		}catch (NumberFormatException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		Article article = new Article();
+		BDD bdd = new BDD(filename);
+		List<String> allLines = bdd.readFile();
+		String allHtml = article.findById( allLines, request );
+		
+		request.setAttribute("allHtml", allHtml);
 
 	
 		
@@ -43,44 +56,4 @@ public class Articles extends HttpServlet {
 		doGet(request, response);
 	}
 
-	
-
-
-	
-	
-	public String findArticle(HttpServletRequest request) {
-		
-		String allHtml = new String(); 
-		Integer id = Integer.parseInt(request.getParameter("id"));
-
-				
-			BDD bdd = new BDD(filename);
-			List<String> allLines = bdd.readFile();
-			
-			
-			//List<String> allLines = Files.readAllLines(Paths.get(filename));
-			//System.out.println(id);
-			
-			for (String line : allLines) {
-				 String[] splitted = line.split("\\|");
-				 
-				 if (Integer.parseInt(splitted[0]) == id) {
-				 
-					String html = "<article><h1>";
-					html += splitted[1] + "</h1><figure>";
-					html += splitted[0] + "<img src=\"";
-					html += request.getContextPath() + "/img/" + splitted[2] + "\"><figcaption>";
-					html += splitted[3] + "</figcaption><span>";
-					html += splitted[4] + "</span></figure></article>";
-				
-				
-				System.out.println(html);
-		
-				allHtml = allHtml + html;
-				 }
-			}
-			
-		
-		return allHtml;
-	}
 }
