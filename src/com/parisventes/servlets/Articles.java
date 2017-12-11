@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.parisventes.beans.BDD;
+
 
 @WebServlet("/articles")
 public class Articles extends HttpServlet {
@@ -42,13 +44,21 @@ public class Articles extends HttpServlet {
 	}
 
 	
+
+
+	
+	
 	public String findArticle(HttpServletRequest request) {
 		
 		String allHtml = new String(); 
 		Integer id = Integer.parseInt(request.getParameter("id"));
 
-		try {
-			List<String> allLines = Files.readAllLines(Paths.get(filename));
+				
+			BDD bdd = new BDD(filename);
+			List<String> allLines = bdd.readFile();
+			
+			
+			//List<String> allLines = Files.readAllLines(Paths.get(filename));
 			//System.out.println(id);
 			
 			for (String line : allLines) {
@@ -70,9 +80,7 @@ public class Articles extends HttpServlet {
 				 }
 			}
 			
-		} catch (NumberFormatException | IOException e) {
-			e.printStackTrace();
-		}
+		
 		return allHtml;
 	}
 }

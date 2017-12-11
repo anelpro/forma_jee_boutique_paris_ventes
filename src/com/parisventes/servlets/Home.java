@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.parisventes.beans.BDD;
+
 @WebServlet("/home")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,10 +38,12 @@ public class Home extends HttpServlet {
 	}
 
 	public String readFile(HttpServletRequest request) { // création d'une méthode pour la lecture du file + affichage console
+		
 		String allHtml = new String(); 
 
-		try {
-			List<String> allLines = Files.readAllLines(Paths.get(filename));
+					
+			BDD bdd = new BDD(filename);
+			List<String> allLines = bdd.readFile();
 					
 			for (String line : allLines) {
 				String[] arr = line.split("\\|");
@@ -60,9 +64,7 @@ public class Home extends HttpServlet {
 			//		System.out.println(a);
 			//	}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 		return allHtml;
 	}
 
