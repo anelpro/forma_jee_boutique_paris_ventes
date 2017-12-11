@@ -2,3 +2,4 @@
 2|Tee-shirt bleu|teeshirt-bleu.jpg|Tee-shirt sport bleu|15
 3|Tee-shirt gris|teeshirt-gris.jpg|Tee-shirt sport gris|20
 4|Tee-shirt violet|teeshirt-purple.jpg|Tee-shirt sport violet|25
+5|Tee-shirt blanc|teeshirt-blanc.jpg|Tee-shirt sport blanc|10
