@@ -45,7 +45,7 @@ public class Home extends HttpServlet {
 				String[] arr = line.split("\\|");
 	
 					String html = "<article><h1>";
-					html += arr[1] + "</h1><figure><a href=\""+ request.getContextPath() + "/article.jsp?id=";
+					html += arr[1] + "</h1><figure><a href=\""+ request.getContextPath() + "/articles?id=";
 					html += arr[0] + "\"><img src=\"";
 					html += request.getContextPath() + "/img/" + arr[2] + "\"><figcaption>";
 					html += arr[3] + "</a></figcaption><span>";
