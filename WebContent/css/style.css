@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+h1 {
+	font-size : 20px;
+	
+}
+
+
+header {
+	background: gray;
+}
+
+header ul>li {
+	display: inline;
+	margin-right: 15px;
+	align: center;
+
+}
+
+
+img {
+	width: 200px
+	
+
+}
+
+
+footer {
+	background: gray;
+	
+}
