@@ -28,10 +28,6 @@ public class BDD {
 	}
 
 
-	public void splitline() {
-		for (String line : allLines) {
-			String[] arr = line.split("\\|");
-		}
-	}
+	
 	
 }

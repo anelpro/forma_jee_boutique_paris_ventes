@@ -17,7 +17,7 @@ import com.parisventes.beans.BDD;
 @WebServlet("/home")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String filename = "C:\\Users\\Administrateur\\Desktop\\Formation_POE\\elipse-jee2\\ParisVentes\\WebContent\\articles.txt";
+	static final String filename = "C:\\Users\\Administrateur\\Desktop\\Formation_POE\\elipse-jee2\\ParisVentes\\WebContent\\articles.txt";
 
 	public Home() {
 		super();
@@ -30,15 +30,19 @@ public class Home extends HttpServlet {
 			throws ServletException, IOException {
 	
 				
-		Article article = new Article();
+		Article articles = new Article();
+		articles.setRequest(request);
 		BDD bdd = new BDD(filename);
-		List<String> allLines = bdd.readFile();
-		String allHtml = article.findAll( allLines, request );
 		
-		request.setAttribute("allHtml", allHtml);
+		request.setAttribute("allHtml", articles.findAll(bdd.readFile()));
+
+		
+		//String allHtml = articles.findAll(bdd.readFile());
+
+		//request.setAttribute("allHtml", allHtml);
+
 		
 		
-			
 		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
 
 	}
