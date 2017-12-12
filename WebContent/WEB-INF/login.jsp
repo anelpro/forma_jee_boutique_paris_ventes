@@ -54,8 +54,12 @@
    <br> 
 	   
 	<c:forEach var="i" begin="0" end="10" step="1"> ${i}, </c:forEach>   <br> 
-	<c:forEach begin="0" end="10" step="1"> i </c:forEach>   
+	<c:forEach begin="0" end="10" step="1"> i </c:forEach>    <br> 
+	<c:forEach items="${tab}" var="str" varStatus="status">${str}<br/>
+	 
+</c:forEach> 
 	
+ 
 	   
 
 </section>

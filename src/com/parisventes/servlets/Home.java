@@ -30,6 +30,7 @@ public class Home extends HttpServlet {
 			throws ServletException, IOException {
 	
 				
+<<<<<<< HEAD
 		Article articles = new Article();
 		articles.setRequest(request);
 		BDD bdd = new BDD(filename);
@@ -46,6 +47,21 @@ public class Home extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
 
 	}
+=======
+		Article article = new Article();
+		BDD bdd = new BDD(filename);
+		List<String> allLines = bdd.readFile();
+		String allHtml = article.findAll( allLines, request );
+		
+		request.setAttribute("allHtml", allHtml);
+		
+		
+			
+		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+
+	}
+
+>>>>>>> master
 
 
 	

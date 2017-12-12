@@ -28,14 +28,22 @@ public class Articles extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+<<<<<<< HEAD
 		Integer id = 0;
 		
 		try {
 			 id = Integer.parseInt(request.getParameter("id"));
+=======
+		//Integer id = 0;
+		
+		try {
+			Integer id = Integer.parseInt(request.getParameter("id"));
+>>>>>>> master
 		}catch (NumberFormatException e) {
 			System.out.println(e.getMessage());
 		}
 		
+<<<<<<< HEAD
 		Article articles = new Article();
 		articles.setRequest(request);
 		
@@ -48,6 +56,14 @@ public class Articles extends HttpServlet {
 		//String allHtml = articles.findById(bdd.readFile(),id);
 		
 		//request.setAttribute("allHtml", allHtml);
+=======
+		Article article = new Article();
+		BDD bdd = new BDD(filename);
+		List<String> allLines = bdd.readFile();
+		String allHtml = article.findById( allLines, request );
+		
+		request.setAttribute("allHtml", allHtml);
+>>>>>>> master
 
 	
 		

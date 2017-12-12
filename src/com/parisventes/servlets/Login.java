@@ -24,11 +24,11 @@ public class Login extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		System.out.println(session.getAttribute("email"));
-		
-		
-		
+				
 		request.setAttribute("age", request.getParameter("age"));
 		
+		String[] str= {"vanessa", "chairat", "tchong"};
+		request.setAttribute("tab", str);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 
 	}
