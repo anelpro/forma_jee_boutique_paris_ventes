@@ -25,6 +25,10 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		System.out.println(session.getAttribute("email"));
 		
+		
+		
+		request.setAttribute("age", request.getParameter("age"));
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 
 	}
