@@ -1,6 +1,10 @@
 <%@ include file="layouts/header.jsp" %>
 
-<body>
+<section>
+
+  ${ sessionScope.email }
+  
+  <br>
 	
 	<form action="/ParisVentes/login" method="post">
 		<label> Connexion</label> <br>
@@ -12,6 +16,6 @@
 
 
 
-</body>
+</section>
 
 <%@ include file="layouts/footer.jsp" %>
