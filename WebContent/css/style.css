@@ -18,6 +18,15 @@ header ul>li {
 
 }
 
+input {
+	
+	diplay : block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+	
+}
+
 
 img {
 	width: 200px
